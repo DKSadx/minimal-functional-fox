@@ -27,22 +27,23 @@ window#main-window {
   --color-urlbar-text: var(--color-5);
 
   /* Easy way to tweak most params */
-  --gap-between-tabs: 10px;
+  /* --gap-between-tabs: 10px;
   --margin-around-urlbar: 9px;
   --margin-before-back-button: 9px;
   --padding-around-searchengine-opts: 10px;
-  --pinned-tab-favicon-dim: 27px;
-  --tab-height: 3.5vh;
-  --tabs-container-height: 135px;
+  --pinned-tab-favicon-dim: 27px; */
+  /* ----------------------- */
+  --tab-height: 30px;
+  /* --tabs-container-height: 100px; */
   --tab-text-font: 'System-ui', sans-serif;
-  --tab-text-font-size: 14pt;
+  --tab-text-font-size: 12pt;
   --margin-before-tab-list: 16px;
   --margin-after-tab-list: -17px;
   --urlbar-text-font: 'mononoki Nerd Font', sans-serif;
-  --urlbar-text-size: 15pt;
+  --urlbar-text-size: 12pt;
   --urlbar-text-weight: 600;
   --urlbar-list-width: 50%;
-  --urlbar-container-margin: 12px;
+  /* --urlbar-container-margin: 12px; */
 
   /* ******************************************************************* */
 
@@ -99,6 +100,8 @@ window#main-window {
   --toolbarbutton-inner-padding: 12px !important;
   --toolbarbutton-outer-padding: 4px !important;
 
+  --url-color-bg: #3b3d4b;
+  --url-color-bg-hover: #4b4d5f;
   --urlbar-popup-action-color: var(--color-fg) !important;
   --urlbar-popup-url-color: var(--color-fg) !important;
   --urlbar-separator-color: var(--color-bg) !important;
@@ -158,13 +161,11 @@ hbox#browser {
 
 #back-button {
   list-style-image: url('left-arrow.svg') !important;
-  margin-left: var(--margin-before-back-button) !important;
-  opacity: 1 !important;
+  /* margin-left: var(--margin-before-back-button) !important; */
 }
 
 #forward-button {
   list-style-image: url('right-arrow.svg') !important;
-  opacity: 1 !important;
 }
 
 #navigator-toolbox {
@@ -215,12 +216,11 @@ hbox#urlbar[focused='true'] {
 }
 
 #urlbar {
-  background-color: var(--color-fg);
-  background: none !important;
+  background-color: var(--url-color-bg) !important;
   border: none !important;
   margin: var(--margin-around-urlbar) !important;
+  border-radius: 30px !important;
 }
-
 .urlbar-one-offs-header-label {
   color: var(--color-fg) !important;
 }
@@ -270,7 +270,22 @@ hbox#urlbar[focused='true'] {
 }
 
 :root:not([uidensity='compact']) #back-button > .toolbarbutton-icon {
-  background-color: var(--color-bg) !important;
+  background-color: #df0763 !important;
+  height: 40px !important;
+  width: 40px !important;
+  padding: 10px !important;
+  border-radius: 50px !important;
+  background: none !important;
+}
+:root:not([uidensity='compact']) #back-button:hover > .toolbarbutton-icon {
+  border-color: #0000 !important;
+}
+:root:not([uidensity='compact']) #forward-button > .toolbarbutton-icon {
+  border-radius: 50px !important;
+  background: none !important;
+}
+:root:not([uidensity='compact']) #forward-button:hover > .toolbarbutton-icon {
+  background: none !important;
 }
 
 /*
@@ -278,13 +293,13 @@ hbox#urlbar[focused='true'] {
 * Rules for Tabs
 ======================================================================
 */
-.tab-line,
+/* .tab-line,
 .tab-background,
 .tabbrowser-tab::before,
 .tabbrowser-tab::after,
 .tabbrowser-tab .tab-icon-image {
   display: none !important;
-}
+} */
 
 .tab-loading-burst {
   border-radius: var(--tab-height) !important;
@@ -376,13 +391,19 @@ hbox#urlbar[focused='true'] {
 }
 
 #tabs-newtab-button {
-  background-image: none !important;
+  margin-left: 5px !important;
 }
 
 #tabs-newtab-button:hover {
+  background-image: linear-gradient(77deg, #5eb7ff, #31e7ff) !important;
+  border-radius: 150px;
+}
+
+/* Plus sign(+) for new tab */
+:-moz-any(#tabs-newtab-button, #new-tab-button, #alltabs-button)
+  .toolbarbutton-icon {
+  padding: 9px 12px !important;
   background: none !important;
-  background-image: none !important;
-  border-radius: 50%;
 }
 
 .tab-close-button {
